@@ -1,0 +1,61 @@
+<map proto="1.4.0">
+    <name>Solar Wars</name>
+    <version>1.0.0</version>
+    <objective>Leak enemy's obsidian core and destroy both of their solar pannels</objective>
+    <authors>
+        <author uuid="6bbe014c-977a-4179-a553-6e004452ec2c"/> <!-- mrjms99 -->
+    </authors>
+    <teams>
+        <team id="red-team" color="dark red" max="8">Red Team</team>
+        <team id="blue-team" color="blue" max="8">Blue Team</team>
+    </teams>
+    
+    <regions>
+        <rectangle id="playable-region" min="-94.0,-93" max="97.0,-4.0"/>
+	<apply block="never" message="You may not place blocks outside the map.">
+		<negative><region id="playable-region"/></negative>
+	</apply>
+	<point id="red-spawn">-73,106,-48</point>
+        <point id="blue-spawn">74,106,-48</point>
+        <point id="obs-spawn">0.5,101,18</point>
+       
+    </regions>
+	<maxbuildheight>95</maxbuildheight>
+	<timelock>on</timelock>
+    <spawns yaw="0" pitch="0">
+        <spawn team="red" kit="spawn" yaw="-91">
+            <region id="red-spawn"/>
+        </spawn>
+        <spawn team="blue" kit="spawn" yaw="90">
+            <region id="blue-spawn"/>
+        </spawn>
+        <default>
+            <region id="obs-spawn"/>
+        </default>
+    </spawns>
+	<cores material="obsidian" leak="3">
+    <core team="red">
+        <region><cuboid min="-90.0,53.0,-52.0" max="-84.0,62.0,-46.0"/></region>
+    </core>
+	<core team="blue">
+        <region><cuboid min="84.0,53.0,-52.0" max="90.0,62.0,-46.0"/></region>
+    </core>
+</cores>
+	<destroyables name="Right Pannel" materials="LAPIS_BLOCK" completion="85%">
+    <destroyable owner="blue-team">
+       <region><cuboid min="44.0,50.0,-92.0" max="68.0,62.0,-74.0"/></region>
+    </destroyable>
+    <destroyable owner="red-team">
+       <region><cuboid min="-67.0,50.0,-32.0" max="-43.0,62.0,-5.0"/></region>
+    </destroyable>
+	<destroyables name="Left Pannel" materials="LAPIS_BLOCK" completion="85%">
+    <destroyable owner="blue-team">
+       <region><cuboid min="44.0,50.0,-23.0" max="68.0,62.0,-5.0"/></region>
+    </destroyable>
+    <destroyable owner="red-team">
+       <region><cuboid min="-67.0,50.0,-92.0" max="-43.0,62.0,-74.0"/></region>
+    </destroyable>
+</destroyables>
+</destroyables>
+
+</map>
